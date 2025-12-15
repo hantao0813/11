@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>온라인 PT · 다이어트 & 근력 강화 프로그램</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="12주 온라인 PT, 다이어트·체형교정·근력강화. PT 프로그램, 보충제 컨설팅, 맞춤 식단 플랜까지 각각 따로 구매 가능." />
+  <style>
+    :root {
+      --primary: #1f8a70;
+      --primary-dark: #146957;
+      --accent: #ffb703;
+      --bg: #0b1120;
+      --card-bg: #111827;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --danger: #ef4444;
+      --shadow-soft: 0 15px 35px rgba(0,0,0,0.35);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background: radial-gradient(circle at top, #1f2933 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .page { min-height: 100vh; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* 헤더 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.8), transparent);
+      border-bottom: 1px solid rgba(148,163,184,0.15);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: radial-gradient(circle at 30% 0, #34d399 0, #10b981 35%, #0f766e 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      box-shadow: 0 0 20px rgba(45,212,191,0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background: rgba(15,118,110,0.25);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-cta span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #f9fafb;
+      box-shadow: 0 10px 25px rgba(16,185,129,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(16,185,129,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15,23,42,0.8);
+      border-color: rgba(148,163,184,0.9);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero { padding: 3.5rem 0 2.5rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(55,65,81,0.8);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #34d399, #22c55e, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 1.4rem 0;
+    }
+
+    .metric { min-width: 120px; }
+    .metric strong { display: block; font-size: 1.4rem; }
+    .metric span { font-size: 0.8rem; color: var(--text-muted); }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .hero-note-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+    }
+
+    .hero-media {
+      position: relative;
+      padding: 1.2rem;
+    }
+
+    .hero-image-wrapper {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      display: block;
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      right: 0.25rem;
+      bottom: 0.25rem;
+      transform: translate(10%, 10%);
+      background: #020617;
+      border-radius: 18px;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.75rem;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.9);
+    }
+
+    .hero-floating-badge strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    /* 공통 섹션 */
+    section { padding: 2.75rem 0 2.25rem; }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 24rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.9);
+      color: var(--text-muted);
+      gap: 0.3rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(15,23,42,0.95), #020617);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem;
+      border: 1px solid rgba(55,65,81,0.9);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+    }
+
+    .card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+
+    .card-tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #4ade80;
+      font-size: 1rem;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0.6rem 0 0.3rem;
+    }
+
+    .price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 0.35rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-image {
+      border-radius: 12px;
+      margin-bottom: 0.6rem;
+      border: 1px solid rgba(148,163,184,0.6);
+    }
+
+    /* 코치 섹션 */
+    .coach-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .coach-card {
+      background: radial-gradient(circle at top left, #111827, #020617 65%);
+      border-radius: 24px;
+      padding: 1.5rem;
+      border: 1px solid rgba(55,65,81,0.9);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .coach-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-main);
+    }
+
+    .coach-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+
+    .coach-highlights span {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,0.9);
+    }
+
+    .coach-avatar {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+    }
+
+    .coach-avatar img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* 후기 */
+    .testimonial { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+    .testimonial strong { display: block; margin-top: 0.4rem; color: var(--text-main); font-size: 0.8rem; }
+
+    .before-after-imgs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .before-after-imgs figure { margin: 0; }
+    .before-after-imgs figcaption { margin-top: 0.25rem; }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      font-size: 0.88rem;
+    }
+
+    .faq-item {
+      padding: 0.85rem 1rem;
+      border-radius: 16px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(55,65,81,0.9);
+    }
+
+    .faq-item h4 { font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .faq-item p { color: var(--text-muted); }
+
+    /* 신청 폼 */
+    .signup-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.6rem;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label { font-size: 0.78rem; color: var(--text-muted); }
+
+    input, select, textarea {
+      background: rgba(15,23,42,0.95);
+      border-radius: 10px;
+      border: 1px solid rgba(55,65,81,0.9);
+      padding: 0.55rem 0.65rem;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      outline: none;
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #6b7280;
+      font-size: 0.8rem;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(16,185,129,0.5);
+    }
+
+    .form-tip {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    .disclaimer span { color: #facc15; }
+
+    /* 푸터 */
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.9);
+      padding: 1.5rem 0 1.25rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* 반응형 */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid,
+      .coach-grid,
+      .signup-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero { padding-top: 2.5rem; }
+      .hero-media { order: -1; }
+      .cards-grid { grid-template-columns: minmax(0, 1fr); }
+      .faq-list { grid-template-columns: minmax(0, 1fr); }
+      form { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 1.9rem; }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 헤더 -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <div class="logo-mark">Fit</div>
+          <span>FitLab 온라인 PT</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#hero">홈</a>
+          <a href="#courses">PT 프로그램</a>
+          <a href="#coach">코치</a>
+          <a href="#testimonials">후기</a>
+          <a href="#pricing">PT 수강료</a>
+          <a href="#shop">보충제·식단·영상</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">문의/신청</a>
+        </nav>
+        <div class="nav-cta">
+          <span>카카오/위챗 : your-id</span>
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            상담 신청
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              집·헬스장 어디서나 가능한 온라인 1:1 PT
+            </div>
+            <h1 class="hero-title">
+              12주 <span class="highlight">다이어트 & 체형 변신 프로그램</span><br/>
+              PT · 보충제 · 식단을 각자 따로, 필요한 것만
+            </h1>
+            <p class="hero-subtitle">
+              무리한 굶기·약 의존 NO.  
+              직장인·학생·유학생·육아맘의 라이프스타일에 맞춘 1:1 PT,  
+              여기에 보충제 컨설팅과 맞춤 일일 식단은 <b>원하실 때 따로 구매</b>하실 수 있습니다.
+            </p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+                PT 프로그램 먼저 보기
+              </button>
+              <button class="btn btn-outline" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+                보충제·식단 옵션 보기
+              </button>
+            </div>
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>500+명</strong>
+                <span>오프·온라인 누적 코칭</span>
+              </div>
+              <div class="metric">
+                <strong>8–12cm</strong>
+                <span>평균 허리 둘레 변화</span>
+              </div>
+              <div class="metric">
+                <strong>92%</strong>
+                <span>8주 이상 유지 수강률</span>
+              </div>
+            </div>
+            <div class="hero-note">
+              <div class="hero-note-icon">i</div>
+              <span>결과는 개인차가 있으며, 우리는 건강하고 지속 가능한 방법만 안내합니다.</span>
+            </div>
+          </div>
+
+          <!-- 오른쪽 이미지 -->
+          <div class="hero-media">
+            <div class="hero-image-wrapper">
+              <!-- 당신의 운동 사진으로 교체 -->
+              <img src="images/hero-gym.jpg" alt="체육관에서 트레이닝 중인 회원 모습">
+            </div>
+            <div class="hero-floating-badge">
+              <strong>다이어트/근력 홈트 영상 제공</strong>
+              <span>회원 전용 영상 패키지 또는 단독 영상 상품으로 구성 가능합니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PT 프로그램 소개 -->
+    <section id="courses">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              PT 프로그램 (운동 코칭)
+            </div>
+            <h2 class="section-title">온라인 PT 프로그램</h2>
+          </div>
+          <p class="section-subtitle">
+            이 섹션은 <b>운동 프로그램만</b> 안내합니다.  
+            보충제·맞춤 식단은 아래 “보충제·식단·영상” 섹션에서 <b>별도 구매</b>가 가능합니다.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- 다이어트·체형교정 -->
+          <article class="card">
+            <div class="pill">체지방 감량·라인 정리</div>
+            <h3>다이어트 & 체형 교정반</h3>
+            <p class="card-tagline">
+              뱃살·옆구리·허벅지를 건강하게 줄이고, 자세와 라인을 동시에 관리하는 프로그램.
+            </p>
+            <ul>
+              <li>주 3–4회, 집·헬스장 겸용 루틴</li>
+              <li>야근·야식 패턴을 고려한 현실적인 코칭</li>
+              <li>주 1회 신체 사이즈·체중 체크 & 피드백</li>
+              <li>거북목·골반 틀어짐 등을 위한 교정 스트레칭 포함</li>
+            </ul>
+          </article>
+
+          <!-- 근력·근비대 -->
+          <article class="card">
+            <div class="pill">근육 증가·체중 증가</div>
+            <h3>근력·근비대 강화반</h3>
+            <p class="card-tagline">
+              마른 체형·볼륨 업이 목표인 분들을 위한 근육 증가 프로그램.
+            </p>
+            <ul>
+              <li>상체/하체 분할 등 근비대 중심 루틴 설계</li>
+              <li>중량·횟수 기록 기반 점진적 과부하 적용</li>
+              <li>월 1회 힘 테스트 및 루틴 재구성</li>
+              <li>관절에 무리 없는 안전한 자세 먼저 교육</li>
+            </ul>
+          </article>
+
+          <!-- 홈트 -->
+          <article class="card">
+            <div class="pill">바쁜 직장인·육아맘</div>
+            <h3>홈트 전용반</h3>
+            <p class="card-tagline">
+              헬스장에 갈 시간은 없지만, 최소한으로라도 몸은 꼭 챙기고 싶은 분들을 위한 홈트 프로그램.
+            </p>
+            <ul>
+              <li>20–30분이면 끝나는 빠른 루틴 중심</li>
+              <li>맨몸·덤벨·밴드 등 최소 장비만 사용</li>
+              <li>영상·GIF·텍스트로 쉽게 따라 할 수 있게 구성</li>
+              <li>출장·여행 기간용 대체 루틴도 함께 제공</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 코치 소개 -->
+    <section id="coach">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              당신의 운동 파트너
+            </div>
+            <h2 class="section-title">대표 코치 소개</h2>
+          </div>
+          <p class="section-subtitle">
+            “빨리 빼는 다이어트”보다, 다시 찌지 않는 습관을 만드는 것을 목표로 합니다.  
+            운동 경험이 전혀 없어도, 현재 체력과 일정에 맞춰 함께 시작합니다.
+          </p>
+        </div>
+
+        <div class="coach-grid">
+          <div class="coach-card">
+            <h3>Alex 코치 · 국가 공인 퍼스널 트레이너</h3>
+            <p>
+              오프라인 PT 7년, 온라인 PT 3년 이상.  
+              누적 500명 이상의 회원과 함께 몸과 생활 습관을 바꾸어 왔습니다.
+            </p>
+            <p style="margin-top:0.6rem;">
+              직장인·학생·유학생·육아맘 등 “시간·에너지가 부족한 사람들”의 현실을 잘 알기 때문에,  
+              스파르타식이 아닌, 꾸준히 갈 수 있는 계획을 가장 우선으로 생각합니다.
+            </p>
+            <p style="margin-top:0.6rem;">
+              <strong>코칭 원칙</strong><br/>
+              · 무작정 굶기 / 위험한 약 / 극단적인 방법은 사용하지 않음<br/>
+              · 체형뿐 아니라 자기관리 루틴을 함께 만들기<br/>
+              · 비교·압박보다, 작은 변화라도 계속 칭찬하며 끌어올리기
+            </p>
+
+            <div class="coach-highlights">
+              <span>국가 공인 생활스포츠지도사 자격</span>
+              <span>체형 교정·기능성 트레이닝 수료</span>
+              <span>다이어트/근력/홈트 코칭 전문</span>
+              <span>온라인 PT 전담 3년+</span>
+            </div>
+          </div>
+
+          <div class="coach-avatar">
+            <img src="images/coach.jpg" alt="온라인 PT 코치 사진">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 후기 -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              실제 회원 후기
+            </div>
+            <h2 class="section-title">회원 변화 후기</h2>
+          </div>
+          <p class="section-subtitle">
+            시작은 모두 “할 수 있을까?”에서 출발했지만,  
+            방향과 방법이 맞으면 누구나 변할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="pill">직장인 · 28세</div>
+            <p class="testimonial">
+              “야근 많고, 술자리도 잦아서 자신이 없었는데  
+              코치님이 제 일정에 맞게 루틴을 짜 주셔서 3개월은 진짜로 버텼어요.  
+              허리 둘레 8cm 줄었고, 계단을 올라갈 때 숨이 덜 차서 가장 좋았어요.”
+              <strong>— L님 · 다이어트 & 체형 교정반</strong>
+            </p>
+            <div class="before-after-imgs">
+              <figure>
+                <img src="images/before-after-1.jpg" alt="수강 전 체형 사진">
+                <figcaption>Before · 시작 전</figcaption>
+              </figure>
+              <figure>
+                <img src="images/before-after-2.jpg" alt="수강 후 체형 사진">
+                <figcaption>After · 12주 후</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="pill">육아맘 · 31세</div>
+            <p class="testimonial">
+              “아이 재우고 20~30분씩 홈트를 하다 보니,  
+              옷이 조금씩 덜 끼는 게 느껴졌어요. 식단도 가족 식단에 맞춰서  
+              같이 할 수 있게 짜주셔서 오래 버틸 수 있었어요.”
+              <strong>— Z님 · 홈트 전용반</strong>
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="pill">마른 체형 · 24세</div>
+            <p class="testimonial">
+              “원래는 아무리 먹어도 살이 안 찌는 줄 알았는데,  
+              섭취량·운동·수면까지 같이 관리하니까 3개월에 +5kg,  
+              어깨·가슴도 눈에 보이게 커졌어요.”
+              <strong>— K님 · 근력·근비대 강화반</strong>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PT 수강료 (PT만) -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              PT 프로그램 수강료 (운동 코칭만)
+            </div>
+            <h2 class="section-title">온라인 PT 수강료</h2>
+          </div>
+          <p class="section-subtitle">
+            아래 금액은 <b>운동 프로그램(PT)만 포함</b>된 예시입니다.<br/>
+            보충제·맞춤 식단·영상 패키지는 <b>아래 별도 섹션에서 개별 상품으로</b> 판매됩니다.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- 4주 체험 -->
+          <article class="card">
+            <div class="pill">처음 시작해 보는 분 추천</div>
+            <h3>4주 스타터 PT</h3>
+            <p class="card-tagline">
+              운동과 코칭이 나와 맞는지 경험해 보는 입문 프로그램.
+            </p>
+            <p class="price">₩ 199,000 <span>/ 4주 (PT만)</span></p>
+            <ul>
+              <li>기본 맞춤 운동 플랜 1세트</li>
+              <li>주 1회 카카오/위챗 피드백</li>
+              <li>기본형 식습관 가이드 텍스트 제공</li>
+              <li>보충제·맞춤 식단은 별도 선택</li>
+            </ul>
+          </article>
+
+          <!-- 12주 스탠다드 -->
+          <article class="card" style="border-color:rgba(52,211,153,0.8);box-shadow:0 20px 45px rgba(16,185,129,0.35);">
+            <div class="pill" style="border-color:rgba(52,211,153,0.8);color:#bbf7d0;">
+              가장 인기 있는 PT
+            </div>
+            <h3>12주 바디 체인지 PT</h3>
+            <p class="card-tagline">
+              3개월 동안 체형 변화·체력 향상을 함께 만드는 핵심 프로그램.
+            </p>
+            <p class="price">₩ 549,000 <span>/ 12주 (PT만)</span></p>
+            <ul>
+              <li>완전 맞춤 운동 루틴 + 주 단위 업데이트</li>
+              <li>주 2회 진행 상황 체크 & 자세 피드백</li>
+              <li>체형·체력 변화에 따른 루틴 재설계</li>
+              <li>식단/보충제/영상은 필요 시 별도 구매</li>
+            </ul>
+          </article>
+
+          <!-- 12주 프리미엄 PT -->
+          <article class="card">
+            <div class="pill">더 촘촘한 관리가 필요하다면</div>
+            <h3>12주 프리미엄 1:1 PT</h3>
+            <p class="card-tagline">
+              중요한 일정(결혼식·촬영 등)을 앞두고 있거나,  
+              보다 세밀한 운동 관리를 원하시는 분들을 위한 코스.
+            </p>
+            <p class="price">₩ 899,000 <span>/ 12주 (PT만)</span></p>
+            <ul>
+              <li>주 3회 이상 피드백 & 필요 시 화상 세션</li>
+              <li>컨디션·수면·스트레스까지 고려한 운동 조정</li>
+              <li>식단·보충제·영상 패키지는 옵션으로 추가 가능</li>
+              <li>정확한 구성은 상담 후 조정</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="disclaimer">
+          * 위 금액과 구성은 예시입니다. 실제 운영 시, 코치님의 상황에 맞게 자유롭게 변경하실 수 있습니다.<br/>
+          <span>PT 결제는 코치와 1:1 상담 후, 별도 안전한 결제 링크를 통해 진행됩니다.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 보충제 & 맞춤 식단 & 영상 : PT와 완전히 분리된 상품 -->
+    <section id="shop">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              PT와 별도로 구매 가능한 상품
+            </div>
+            <h2 class="section-title">보충제 · 맞춤 식단 · 영상 상품</h2>
+          </div>
+          <p class="section-subtitle">
+            아래 상품들은 <b>PT 없이도 단독 구매</b>가 가능합니다.<br/>
+            이미 헬스 PT를 받고 계신 분들도, 보충제/식단/영상만 따로 신청하실 수 있습니다.
+          </p>
+        </div>
+
+        <!-- 1줄: 영상 + 단백질 + 크레아틴 -->
+        <div class="cards-grid">
+          <!-- 다이어트 영상 패키지 -->
+          <article class="card">
+            <div class="pill">단독 구매 가능 · 홈트 영상</div>
+            <img src="images/hero-gym.jpg" alt="홈트 다이어트 영상 예시" class="product-image">
+            <h3>12주 다이어트 홈트 영상 패키지</h3>
+            <p class="card-tagline">
+              지방 연소에 효과적인 전신·하체·코어 루틴을 집에서 따라 할 수 있도록 만든 영상 모음.
+            </p>
+            <p class="price">₩ 79,000 <span>/ 12주 영상 이용권 (예시)</span></p>
+            <ul>
+              <li>주 3~4회 기준으로 바로 쓸 수 있는 루틴 구성</li>
+              <li>입문/중급/상급 난이도별 영상 포함</li>
+              <li>회원 전용 스트리밍 링크 제공 (다운로드X)</li>
+              <li>PT와 별개로 영상만 단독 구매 가능</li>
+            </ul>
+          </article>
+
+          <!-- 단백질 보충제 컨설팅 -->
+          <article class="card">
+            <div class="pill">단독 구매 가능 · 보충제</div>
+            <img src="images/protein.jpg" alt="단백질 보충제 이미지" class="product-image">
+            <h3>단백질 보충제 컨설팅 & 가이드</h3>
+            <p class="card-tagline">
+              체중·목표·식습관을 바탕으로, 나에게 맞는 단백질 보충제와 섭취 방법을 정리해 드립니다.
+            </p>
+            <p class="price">₩ 39,000 <span>/ 1회 컨설팅 (예시)</span></p>
+            <ul>
+              <li>브랜드·성분·가격대별 2~3개 제품 추천</li>
+              <li>1일 섭취량·타이밍·주의사항 안내</li>
+              <li>식사량이 충분한 경우, 꼭 먹지 않아도 되는지 여부도 함께 상담</li>
+              <li>현재 복용 중인 제품이 있다면, 그대로 활용하는 방법도 안내</li>
+            </ul>
+          </article>
+
+          <!-- 크레아틴 플랜 -->
+          <article class="card">
+            <div class="pill">단독 구매 가능 · 보충제</div>
+            <img src="images/creatine.jpg" alt="크레아틴 보충제 이미지" class="product-image">
+            <h3>크레아틴 활용 플랜 설계</h3>
+            <p class="card-tagline">
+              근력·퍼포먼스 향상을 위한 크레아틴 섭취 계획을 1:1로 설계합니다.
+            </p>
+            <p class="price">₩ 39,000 <span>/ 1회 플랜 설계 (예시)</span></p>
+            <ul>
+              <li>체중·운동 빈도 기반 권장 섭취량 계산</li>
+              <li>로딩/유지 여부, 타이밍 설정</li>
+              <li>다른 보충제(카페인 등)와 병행 시 유의사항 안내</li>
+              <li>특이 체질·질환이 있는 경우, 전문의 상담 권장 안내 포함</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- 2줄: 식단 플랜 (PT+식단용 / 식단만) + 구매 방법 -->
+        <div style="margin-top:2rem;">
+          <div class="section-header" style="margin-bottom:1.1rem;">
+            <div>
+              <div class="badge">
+                <span class="badge-dot"></span>
+                운동 + 식단 / 식단만 따로
+              </div>
+              <h2 class="section-title" style="font-size:1.2rem;">맞춤 일일 식단 플랜</h2>
+            </div>
+            <p class="section-subtitle">
+              “오늘 뭐 먹지?”를 줄여 주는 하루 단위 식단표.  
+              PT 회원용 플랜과, <b>식단만 단독으로 구매</b>하는 플랜을 구분해 두었습니다.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <!-- PT와 함께 쓰는 식단 플랜 -->
+            <article class="card">
+              <div class="pill">PT 회원 전용 옵션</div>
+              <img src="images/meal-plan.jpg" alt="운동과 함께 쓰는 식단 예시" class="product-image">
+              <h3>4주 PT 연동 다이어트 식단 플랜</h3>
+              <p class="card-tagline">
+                현재 진행 중인 PT 프로그램의 운동 강도·스케줄에 맞춰 짜 드리는 식단 플랜.
+              </p>
+              <p class="price">₩ 149,000 <span>/ 4주 (예시)</span></p>
+              <ul>
+                <li>하루 3끼 + 간식 포함, 1일 칼로리 및 영양 비율 설계</li>
+                <li>운동 강도·출퇴근 시간·가용 예산에 맞춘 구성</li>
+                <li>장보기 리스트 & 간단 레시피 PDF 제공</li>
+                <li>PT 수강 기간 동안 1회 무료 수정 포함</li>
+              </ul>
+            </article>
+
+            <!-- 식단만 단독 구매 (더 저렴) -->
+            <article class="card">
+              <div class="pill">식단만 단독 구매 (PT 없이)</div>
+              <img src="images/meal-plan.jpg" alt="단독 식단 예시" class="product-image">
+              <h3>4주 단독 다이어트 식단 플랜</h3>
+              <p class="card-tagline">
+                PT는 받지 않지만, “식단만이라도 제대로 해보고 싶다”는 분들을 위한 플랜.
+              </p>
+              <p class="price">₩ 89,000 <span>/ 4주 (예시)</span></p>
+              <ul>
+                <li>하루 3끼 + 간식 기준, 칼로리·영양 비율 설계</li>
+                <li>선호 음식·알레르기·채식 여부 반영</li>
+                <li>헬스 PT/다른 운동과 함께 사용해도 무방</li>
+                <li>PT 연동 플랜보다 더 저렴한 가격으로 제공</li>
+              </ul>
+            </article>
+
+            <!-- 구매/상담 안내 -->
+            <article class="card">
+              <div class="pill">구매 & 상담 방법</div>
+              <h3>보충제·식단·영상 상품 신청 안내</h3>
+              <p class="card-tagline">
+                위 상품들은 모두 <b>PT와 완전히 분리된 개별 상품</b>입니다.  
+                원하는 상품만 골라서 신청하실 수 있습니다.
+              </p>
+              <ul>
+                <li>아래 상담 폼에서 “관심 옵션”을 선택해 주세요.</li>
+                <li>이미 받고 계신 PT/운동이 있다면, 어떤 운동인지 적어 주세요.</li>
+                <li>코치가 24시간 이내로 카카오/위챗으로 상품·가격·진행 방법을 안내드립니다.</li>
+              </ul>
+              <button class="btn btn-outline" style="margin-top:0.7rem;width:100%;"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                보충제·식단·영상 상담 신청하러 가기
+              </button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              자주 묻는 질문
+            </div>
+            <h2 class="section-title">FAQ · PT와 옵션 상품에 대해</h2>
+          </div>
+          <p class="section-subtitle">
+            운동 경험, 보충제, 식단 플랜에 대해 자주 나오는 질문들을 모았습니다.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>Q. PT를 신청해야만 보충제/식단을 살 수 있나요?</h4>
+            <p>아니요. 보충제 컨설팅, 맞춤 식단, 영상 패키지는 PT 없이도 단독 구매 가능합니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 이미 다른 곳에서 PT를 받고 있는데, 식단만 따로 신청해도 되나요?</h4>
+            <p>네, 가능합니다. 현재 받고 계신 PT 정보와 운동량을 알려주시면 그에 맞춰 식단을 설계해 드립니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 보충제(단백질/크레아틴)를 꼭 먹어야 하나요?</h4>
+            <p>필수는 아닙니다. 식사만으로도 충분할 수 있고, 필요 여부는 상담 후 안내드립니다.  
+               특이 체질이나 질환이 있다면, 반드시 전문의와 상의하시는 것을 권장합니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 맞춤 식단 플랜이랑 PT를 같이 신청하면 더 좋은가요?</h4>
+            <p>같이 진행하면 운동 강도와 식단이 잘 맞도록 조정할 수 있다는 장점이 있습니다.  
+               하지만 예산이나 상황에 따라 식단만·PT만 따로 시작하시는 것도 충분히 좋습니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 환불은 어떻게 되나요?</h4>
+            <p>PT/식단/보충제 컨설팅/영상 상품 각각의 환불 규정은 코치와 상담 시 안내드립니다.  
+               일반적으로, 시작 전에는 전액 환불, 자료 전달 이후에는 부분 환불 또는 환불 불가 정책을 적용합니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 건강상 특별한 이슈가 있는데, 그래도 신청해도 될까요?</h4>
+            <p>현재 질환·복용 약이 있다면 반드시 미리 알려주셔야 하며,  
+               의사 소견에 따라 운동 강도·식단·보충제 사용 여부를 결정하는 것을 원칙으로 합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 문의/신청 -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              필요한 것만 골라서 시작해 보세요
+            </div>
+            <h2 class="section-title">상담 · 신청 폼</h2>
+          </div>
+          <p class="section-subtitle">
+            아래 정보를 남겨 주시면, 24시간 이내로 카카오톡/위챗으로  
+            PT / 보충제 / 식단 / 영상 상품 중 원하는 조합에 맞춰 안내드립니다.
+          </p>
+        </div>
+
+        <div class="signup-grid">
+          <div>
+            <form action="#" method="post">
+              <div class="form-group">
+                <label for="name">이름</label>
+                <input id="name" name="name" type="text" placeholder="예: 홍길동 / 김OO" required>
+              </div>
+              <div class="form-group">
+                <label for="age">나이</label>
+                <input id="age" name="age" type="number" min="10" max="80" placeholder="예: 26">
+              </div>
+              <div class="form-group">
+                <label for="contact-info">연락처 (카카오/위챗/전화번호)</label>
+                <input id="contact-info" name="contact" type="text" placeholder="코치가 연락드릴 아이디 또는 번호" required>
+              </div>
+              <div class="form-group">
+                <label for="goal">주요 목표</label>
+                <select id="goal" name="goal">
+                  <option value="">선택해 주세요</option>
+                  <option value="다이어트">체지방 감량·다이어트</option>
+                  <option value="근비대">근육 증가·체중 증가</option>
+                  <option value="체형교정">체형 교정·자세 개선</option>
+                  <option value="체력회복">체력 회복·건강 관리</option>
+                  <option value="기타">기타</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label for="interest">관심 있는 상품 (필수 선택)</label>
+                <select id="interest" name="interest">
+                  <option value="">선택해 주세요</option>
+                  <option value="pt-only">PT만 (운동 코칭)</option>
+                  <option value="supp-only">보충제 컨설팅만</option>
+                  <option value="meal-only">맞춤 식단만</option>
+                  <option value="video-only">다이어트 영상만</option>
+                  <option value="pt-plus-meal">PT + 맞춤 식단</option>
+                  <option value="pt-plus-supp">PT + 보충제 컨설팅</option>
+                  <option value="all">PT + 보충제 + 식단 + 영상 모두</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label for="situation">현재 상황/운동 경험 (간단히)</label>
+                <textarea id="situation" name="situation" rows="3" placeholder="예: 운동은 거의 안 하고, 야근·야식이 많음. 허리·어깨 통증이 있고, 몸무게는 00kg 정도입니다."></textarea>
+              </div>
+
+              <div class="form-group full">
+                <label for="time">주당 운동 가능 시간</label>
+                <select id="time" name="time">
+                  <option value="">선택해 주세요</option>
+                  <option value="주1-2회">주 1–2회</option>
+                  <option value="주3-4회">주 3–4회</option>
+                  <option value="주5회이상">주 5회 이상</option>
+                  <option value="불규칙">불규칙 · 주마다 다름</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <button type="submit" class="btn btn-primary" style="width:100%;">상담 신청하기</button>
+              </div>
+            </form>
+            <p class="form-tip">
+              * 현재 폼은 예시용입니다. 실제 신청을 받으시려면 Google Forms, Formspree, Notion 폼 또는 직접 구축한 서버와 연결해 사용하시면 됩니다.
+            </p>
+          </div>
+
+          <div>
+            <div class="card" style="height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <h3 style="margin-bottom:0.5rem;">카카오톡/위챗으로 바로 문의</h3>
+                <p class="card-tagline">
+                  폼 작성이 번거로우시면, 아래 QR 또는 아이디로 바로 메시지를 보내 주세요.
+                </p>
+                <img src="images/wechat-qrcode.png" alt="카카오톡/위챗 QR 코드" style="max-width:220px;border-radius:12px;border:1px solid rgba(148,163,184,0.6);margin-bottom:0.7rem;">
+                <ul>
+                  <li>추가 후 첫 메시지에 “<b>상담 + 이름 + 관심 상품</b>”을 적어 주세요.</li>
+                  <li>예: “상담 / 김OO / PT + 식단” 또는 “식단만 상담”</li>
+                  <li>근무 시간 기준 24시간 이내로 순차적으로 답변드립니다.</li>
+                </ul>
+              </div>
+              <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">
+                입력해 주신 개인정보는 상담·상품 안내 목적 외에는 사용되지 않으며,  
+                제3자에게 제공되지 않습니다.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="container">
+      <div class="footer-flex">
+        <div>© <span id="year"></span> FitLab 온라인 PT · All Rights Reserved</div>
+        <div class="footer-links">
+          <a href="#hero">맨 위로</a>
+          <a href="#">이용약관 (예시)</a>
+          <a href="#">개인정보처리방침 (예시)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
